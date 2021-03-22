@@ -15,7 +15,7 @@ is_done = False
 while not is_done:
     print("\nPuede escoger una de las siguientes opciones:")
     print("(1) Relación de las palabras utilizadas en el texto, así como las veces que aparecen.")
-    print("(2) Las 10 palabras más utilizadas en el texto, asi como las veces que aparecen.")
+    print(f"(2) Las {words_most_used} palabras más utilizadas en el texto, asi como las veces que aparecen.")
     try:
         option = int(input("Escribe el número de una de la opción seleccionada: "))
     except ValueError:
@@ -42,7 +42,10 @@ while not is_done:
         counted_words = word_counter_sorter.count_words()
         sorted_counted_words = word_counter_sorter.sort_counted_words(counted_words)
         counter = 0
-        print(f"\nLas 10 palabras más utilizadas en {text.file_name} son las siguientes:")
+        if words_most_used == 1:
+            print(f"\nLa palabra más utilizada en {text.file_name} es la siguiente:")
+        else:
+            print(f"\nLas {words_most_used} palabras más utilizadas en {text.file_name} son las siguientes:")
         for value, key in sorted_counted_words:
             if counter < words_most_used:
                 if value == 1:
